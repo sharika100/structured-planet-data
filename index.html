@@ -1,0 +1,331 @@
+<!doctype html>
+<!--
+  Structured Planet Data — index.html
+  --------------------------------------------------
+  Author: Your Name
+  Challenge: Structuring Planet Data 🪐📊✨
+  Hashtag: #cl-web-structuredplanetdata
+  Description:
+    A responsive, semantic, and visually appealing HTML table 
+    showing planet data from our Solar System.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Structured Planet Data — Solar System</title>
+  <meta name="description" content="A visually appealing HTML table of planets in our Solar System." />
+
+  <style>
+    :root {
+      --bg: #0f1724;
+      --card: #0b1220;
+      --muted: #9aa7bd;
+      --accent: #7dd3fc;
+      --glass: rgba(255,255,255,0.04);
+      --glass-2: rgba(255,255,255,0.02);
+      --radius: 16px;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(180deg, #031129 0%, #061429 60%);
+      color: #e6eef8;
+      margin: 0;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: linear-gradient(180deg, var(--card), rgba(11, 18, 32, 0.6));
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: 0 10px 30px rgba(2, 6, 23, 0.6);
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    header h1 {
+      font-size: 1.4rem;
+      margin: 0;
+    }
+
+    header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .table-wrap {
+      background: linear-gradient(180deg, var(--glass), var(--glass-2));
+      padding: 1rem;
+      border-radius: 12px;
+      backdrop-filter: blur(6px);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+
+    caption {
+      caption-side: top;
+      text-align: left;
+      padding: 0 0 0.75rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    thead th {
+      text-align: left;
+      padding: 0.85rem 0.6rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    tbody td {
+      padding: 0.75rem 0.6rem;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.03);
+      vertical-align: middle;
+    }
+
+    tbody tr:nth-child(even) {
+      background: linear-gradient(90deg, rgba(255,255,255,0.01), transparent);
+    }
+
+    tbody tr:hover {
+      background: linear-gradient(90deg, rgba(125,211,252,0.03), transparent);
+    }
+
+    .planet-cell {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .planet-cell img {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.5);
+    }
+
+    .planet-name {
+      font-weight: 600;
+    }
+
+    .planet-type {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .small { font-size: 0.85rem; color: var(--muted); }
+    .numeric { font-variant-numeric: tabular-nums; }
+
+    /* Responsive layout */
+    @media (max-width: 760px) {
+      table, thead, tbody, th, td, tr { display: block; }
+      thead { display: none; }
+      tbody tr {
+        margin-bottom: 1rem;
+        border-radius: 12px;
+        padding: 0.75rem;
+        background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      }
+      tbody td {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.6rem;
+        border-bottom: none;
+      }
+      tbody td::before {
+        content: attr(data-label);
+        color: var(--muted);
+        font-weight: 600;
+      }
+      .planet-cell img { width: 48px; height: 48px; }
+    }
+
+    footer {
+      margin-top: 1rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    a.link {
+      color: var(--accent);
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+    <header>
+      <div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#0ea5e9,#6366f1);display:flex;align-items:center;justify-content:center;font-weight:700">☄️</div>
+      <div>
+        <h1>Structured Planet Data — Solar System</h1>
+        <p>A responsive HTML table listing the eight planets with key data.</p>
+      </div>
+    </header>
+
+    <section class="table-wrap">
+      <table>
+        <caption>Planets ordered from the Sun outward — key physical and orbital data</caption>
+        <thead>
+          <tr>
+            <th>Planet</th>
+            <th>Type</th>
+            <th>Diameter (km)</th>
+            <th>Mass (10²⁴ kg)</th>
+            <th># of Moons</th>
+            <th>Orbital Period (days)</th>
+            <th>Avg Temp (°C)</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td data-label="Planet">
+              <div class="planet-cell">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Mercury_in_true_color.jpg" alt="Mercury">
+                <div><div class="planet-name">Mercury</div><div class="planet-type">Terrestrial</div></div>
+              </div>
+            </td>
+            <td data-label="Type">Terrestrial</td>
+            <td data-label="Diameter" class="numeric">4,879</td>
+            <td data-label="Mass" class="numeric">0.330</td>
+            <td data-label="Moons" class="numeric">0</td>
+            <td data-label="Orbital Period" class="numeric">88</td>
+            <td data-label="Avg Temp" class="numeric">~167</td>
+          </tr>
+
+          <tr>
+            <td data-label="Planet">
+              <div class="planet-cell">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/85/Venus_globe.jpg" alt="Venus">
+                <div><div class="planet-name">Venus</div><div class="planet-type">Terrestrial</div></div>
+              </div>
+            </td>
+            <td data-label="Type">Terrestrial</td>
+            <td class="numeric">12,104</td>
+            <td class="numeric">4.87</td>
+            <td class="numeric">0</td>
+            <td class="numeric">225</td>
+            <td class="numeric">~462</td>
+          </tr>
+
+          <tr>
+            <td data-label="Planet">
+              <div class="planet-cell">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg" alt="Earth">
+                <div><div class="planet-name">Earth</div><div class="planet-type">Terrestrial</div></div>
+              </div>
+            </td>
+            <td data-label="Type">Terrestrial</td>
+            <td class="numeric">12,742</td>
+            <td class="numeric">5.97</td>
+            <td class="numeric">1</td>
+            <td class="numeric">365.25</td>
+            <td class="numeric">~15</td>
+          </tr>
+
+          <tr>
+            <td data-label="Planet">
+              <div class="planet-cell">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/58/Mars_Valles_Marineris.jpeg" alt="Mars">
+                <div><div class="planet-name">Mars</div><div class="planet-type">Terrestrial</div></div>
+              </div>
+            </td>
+            <td>Terrestrial</td>
+            <td class="numeric">6,779</td>
+            <td class="numeric">0.642</td>
+            <td class="numeric">2</td>
+            <td class="numeric">687</td>
+            <td class="numeric">-60</td>
+          </tr>
+
+          <tr>
+            <td data-label="Planet">
+              <div class="planet-cell">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e2/Jupiter.jpg" alt="Jupiter">
+                <div><div class="planet-name">Jupiter</div><div class="planet-type">Gas Giant</div></div>
+              </div>
+            </td>
+            <td>Gas Giant</td>
+            <td class="numeric">139,820</td>
+            <td class="numeric">1,898</td>
+            <td class="numeric">95+</td>
+            <td class="numeric">4,333</td>
+            <td class="numeric">-110</td>
+          </tr>
+
+          <tr>
+            <td data-label="Planet">
+              <div class="planet-cell">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/73/Saturn_during_Equinox.jpg" alt="Saturn">
+                <div><div class="planet-name">Saturn</div><div class="planet-type">Gas Giant</div></div>
+              </div>
+            </td>
+            <td>Gas Giant</td>
+            <td class="numeric">116,460</td>
+            <td class="numeric">568</td>
+            <td class="numeric">83+</td>
+            <td class="numeric">10,759</td>
+            <td class="numeric">-140</td>
+          </tr>
+
+          <tr>
+            <td data-label="Planet">
+              <div class="planet-cell">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Uranus2.jpg" alt="Uranus">
+                <div><div class="planet-name">Uranus</div><div class="planet-type">Ice Giant</div></div>
+              </div>
+            </td>
+            <td>Ice Giant</td>
+            <td class="numeric">50,724</td>
+            <td class="numeric">86.8</td>
+            <td class="numeric">27</td>
+            <td class="numeric">30,687</td>
+            <td class="numeric">-195</td>
+          </tr>
+
+          <tr>
+            <td data-label="Planet">
+              <div class="planet-cell">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/56/Neptune_Full.jpg" alt="Neptune">
+                <div><div class="planet-name">Neptune</div><div class="planet-type">Ice Giant</div></div>
+              </div>
+            </td>
+            <td>Ice Giant</td>
+            <td class="numeric">49,244</td>
+            <td class="numeric">102</td>
+            <td class="numeric">14</td>
+            <td class="numeric">60,190</td>
+            <td class="numeric">-200</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <footer>
+      <span>🌐 Source: NASA Planetary Data (approx.)</span>
+      <a class="link" href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables" target="_blank">Learn More →</a>
+    </footer>
+  </main>
+</body>
+</html>
